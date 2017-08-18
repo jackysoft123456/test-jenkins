@@ -74,6 +74,8 @@ public class InfoServlet extends HttpServlet {
 							JsonObject user = parse.parse(v).getAsJsonObject();
 							try {
 								request.setAttribute("username", user.get("Name"));
+								//单点登录验证-转到主系统
+								request.setAttribute("container-sso", true);
 								request.getRequestDispatcher("info.jsp").forward(request, response);
 							} catch (ServletException e) {
 								e.printStackTrace();
